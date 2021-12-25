@@ -18,7 +18,7 @@ candidate_options = []
 candidate_votes = {}
 
 # 1: Create a county list and county votes dictionary.
-county_options = []
+county_names = []
 county_votes = {}
 
 
@@ -28,7 +28,7 @@ winning_count = 0
 winning_percentage = 0
 
 # 2: Track the largest county and county voter turnout.
-largest_county = ""
+largest_county_turnout = ""
 largest_county_votes = 0
 
 
@@ -66,11 +66,11 @@ with open(file_to_load) as election_data:
 
         # 4a: Write an if statement that checks that the
         # county does not match any existing county in the county list.
-        if county_name not in county_options:
+        if county_name not in county_names:
 
 
             # 4b: Add the existing county to the list of counties.
-            county_options.append(county_name)
+            county_names.append(county_name)
 
             # 4c: Begin tracking the county's vote count.
             county_votes[county_name] = 0
@@ -111,9 +111,8 @@ with open(file_to_save, "w") as txt_file:
 
         # 6d: Print the county results to the terminal.
         county_results = (
-                f"{county}: {county_percentage: .1f}% {county_vote: ,}\n"
+                f"{county}: {county_percentage: .1f}% ({county_vote: ,})\n"
          ) 
-
         print(county_results)  
 
 
@@ -121,12 +120,22 @@ with open(file_to_save, "w") as txt_file:
         txt_file.write(county_results)
 
         # 6f: Write an if statement to determine the winning county and get its vote count.
+        if (county_vote > largest_county_votes):
+            largest_county_votes = county_vote
+            largest_county_turnout = county
 
 
     # 7: Print the county with the largest turnout to the terminal.
+    largest_county_turnout = (
+        f"\n-------------------------\n"
+        f"Largest County Turnout:{largest_county_turnout}\n"
+        f"-------------------------\n"
+    )
+    print(largest_county_turnout)
 
 
     # 8: Save the county with the largest turnout to a text file.
+    txt_file.write(largest_county_turnout)
 
 
     # Save the final candidate vote count to the text file.
