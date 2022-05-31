@@ -39,7 +39,8 @@ The analysis of the election shows the following:
 	Denver, which produced 82.8% of voters, for a total of 306,055 voters.
 
 ## Expected Election Results
-![expected_election_results](./Images/expected_election_results.png)
+
+![expected_election_results](/Images/expected_election_results.png)
 
 # Election-Audit Summary
 Expanding the Election Audit to include voter turnout by county with candidates results is a great way to take advantage of the convenience a python script provides. The added insight can be a guide for future election performance, so that you may properly allocate resources. A little time invested into customizing the code can provide on-demand analysis.
